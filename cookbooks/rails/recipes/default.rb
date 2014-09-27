@@ -18,7 +18,7 @@
 #
 
 include_recipe "ruby"
-include_recipe "myApp"
+#include_recipe "myApp"
 
 %w{ rails actionmailer actionpack activerecord activesupport activeresource }.each do |rails_gem|
   gem_package rails_gem do
@@ -33,21 +33,21 @@ end
 
 
 
-directory "/var/lib/jenkins/workspace/primefactor/prime_factors_kata/tmp" do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
+#directory "/var/lib/jenkins/workspace/primefactor/prime_factors_kata/tmp" do
+ # owner 'root'
+  #group 'root'
+  #mode '0755'
+  #action :create
+#end
 
 
-%w[ /var/lib/jenkins/workspace/primefactor/prime_factors_kata/db  /var/lib/jenkins/workspace/primefactor/prime_factors_kata/tmp /var/lib/jenkins/workspace/primefactor/prime_factors_kata/Gemfile.lock ].each do |path|
-  directory path do
-    owner 'root'
-    group 'root'
-    mode '0677'
-  end
-end
+#%w[ /var/lib/jenkins/workspace/primefactor/prime_factors_kata/db  /var/lib/jenkins/workspace/primefactor/prime_factors_kata/tmp /var/lib/jenkins/workspace/primefactor/prime_factors_kata/Gemfile.lock ].each do |path|
+ # directory path do
+  #  owner 'root'
+   # group 'root'
+    #mode '0677'
+  #end
+#end
 
 
 

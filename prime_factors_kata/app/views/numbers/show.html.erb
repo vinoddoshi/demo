@@ -1,0 +1,11 @@
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prime Number :</strong>
+  <%= @number.prime %>
+ <br> Prime Factors :<%= @primefact %>
+</p>
+
+<%= link_to 'Edit', edit_number_path(@number) %> |
+<%= link_to 'Back', numbers_path %>

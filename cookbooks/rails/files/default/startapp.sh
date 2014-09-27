@@ -1,0 +1,1 @@
+sudo service primfact.sh start

@@ -1,0 +1,3 @@
+{
+        "run_list": [ "recipe[apt]","recipe[apache]","recipe[runit]", "recipe[jenkins]", "recipe[myApp]", "recipe[git]", "recipe[rbenv]", "recipe[build-essential]", "recipe[ruby]", "recipe[nodejs]", "recipe[rails]" ]
+}

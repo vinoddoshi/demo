@@ -1,0 +1,4 @@
+-- Install 
+-- apache
+-- Jenkins
+-- Ruby on Rail application

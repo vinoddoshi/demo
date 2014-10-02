@@ -35,7 +35,7 @@ end
 
 
 
-directory "#{node['app']['dir']}/tmp" do
+directory "/var/chef/prime_factors_kata/tmp" do
  owner 'root'
  group 'root'
  mode '0755'
@@ -43,7 +43,7 @@ directory "#{node['app']['dir']}/tmp" do
 end
 
 
-%w[ #{node['app']['dir']}/db  #{node['app']['dir']}/tmp #{node['app']['dir']}/Gemfile.lock ].each do |path|
+%w[ /var/chef/prime_factors_kata/db  /var/chef/prime_factors_kata/tmp /var/chef/prime_factors_kata/Gemfile.lock ].each do |path|
   directory path do
     owner 'root'
     group 'root'
@@ -75,11 +75,11 @@ end
   #action :nothing
 #end
 
-#execute 'apt-get_install0' do
- # command 'apt-get install libsqlite3-dev -y'
-  #ignore_failure true
-  #action :nothing
-#end
+execute 'apt-get_install0' do
+  command 'apt-get install sqlite3 libsqlite3-dev'
+  ignore_failure true
+  action :nothing
+end
 
 #execute 'apt-get_install1' do
  # command 'apt-get install ruby-railties-4.0 -y'

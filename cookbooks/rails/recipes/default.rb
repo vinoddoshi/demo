@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+node.default['app']['dir'] = '/var/chef/prime_factors_kata'
+
 include_recipe "ruby"
 #include_recipe "myApp"
 
@@ -33,21 +35,21 @@ end
 
 
 
-#directory "/var/lib/jenkins/workspace/primefactor/prime_factors_kata/tmp" do
- # owner 'root'
-  #group 'root'
-  #mode '0755'
-  #action :create
-#end
+directory "#{node['app']['dir']}/tmp" do
+ owner 'root'
+ group 'root'
+ mode '0755'
+ action :create
+end
 
 
-#%w[ /var/lib/jenkins/workspace/primefactor/prime_factors_kata/db  /var/lib/jenkins/workspace/primefactor/prime_factors_kata/tmp /var/lib/jenkins/workspace/primefactor/prime_factors_kata/Gemfile.lock ].each do |path|
- # directory path do
-  #  owner 'root'
-   # group 'root'
-    #mode '0677'
-  #end
-#end
+%w[ #{node['app']['dir']}/db  #{node['app']['dir']}/tmp #{node['app']['dir']}/Gemfile.lock ].each do |path|
+  directory path do
+    owner 'root'
+    group 'root'
+    mode '0677'
+  end
+end
 
 
 

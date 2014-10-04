@@ -3,4 +3,4 @@ sudo mkdir tmp
 sudo chmod 677 -R tmp
 sudo chmod 677 -R db
 rake db:migrate
-rails s
+#rails s

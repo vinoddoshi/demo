@@ -9,7 +9,7 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 USER="ubuntu"
 PORT=3000
-RAILS_ROOT="/var/lib/jenkins/workspace/primefactor/prime_factors_kata"
+RAILS_ROOT="/var/chef/prime_factors_kata"
 COMMAND="rails s  -p $PORT -d"
 DESCRIPTION="Rails instance"
 

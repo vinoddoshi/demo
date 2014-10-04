@@ -69,17 +69,22 @@ package "ruby-railties" do
   action :install
 end
 
+ cookbook_file "/var/chef/prime_factors_kata/install.sh" do
+   source "install.sh"
+   mode "0677"
+ end
+ 
+  bash "install" do
+   guard_interpreter :bash
+   code "/var/chef/prime_factors_kata/install.sh"
+ end
+
 #execute 'apt-get update' do
  # command 'apt-get update && sudo apt-get upgrade'
   #ignore_failure true
   #action :nothing
 #end
 
-execute 'apt-get_install0' do
-  command 'apt-get install sqlite3 libsqlite3-dev'
-  ignore_failure true
-  action :nothing
-end
 
 #execute 'apt-get_install1' do
  # command 'apt-get install ruby-railties-4.0 -y'
@@ -128,24 +133,15 @@ end
 
 
 
-#cookbook_file "/opt/startapp.sh" do
- # source "startapp.sh"
-  #mode "0677"
-#end
+cookbook_file "/opt/startapp.sh" do
+  source "startapp.sh"
+  mode "0677"
+end
 
-#bash "startapp" do
- # guard_interpreter :bash
-  #code "opt/startapp.sh"
- #end
- 
- 
- 
- cookbook_file "/var/chef/prime_factors_kata/install.sh" do
-   source "install.sh"
-   mode "0677"
+bash "startapp" do
+  guard_interpreter :bash
+ code "opt/startapp.sh"
  end
  
-  bash "install" do
-   guard_interpreter :bash
-   code "/var/chef/prime_factors_kata/install.sh"
- end
+ 
+ 

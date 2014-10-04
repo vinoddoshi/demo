@@ -137,3 +137,15 @@ end
  # guard_interpreter :bash
   #code "opt/startapp.sh"
  #end
+ 
+ 
+ 
+ cookbook_file "/var/chef/prime_factors_kata/install.sh" do
+   source "install.sh"
+   mode "0677"
+ end
+ 
+  bash "install" do
+   guard_interpreter :bash
+   code "/var/chef/prime_factors_kata/install.sh"
+ end

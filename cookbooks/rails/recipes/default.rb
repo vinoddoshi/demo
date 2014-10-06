@@ -22,12 +22,13 @@
 include_recipe "ruby"
 #include_recipe "myApp"
 
-execute 'install rails gem' do
-  command 'gem install rails'
-  not_if 'gem list | grep rails'
+#execute 'install rails gem' do
+ # command 'gem install rails'
+#end
+
+package "rails" do
+  action :install
 end
-
-
 
 directory "/var/chef/prime_factors_kata/tmp" do
  owner 'root'

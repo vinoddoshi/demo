@@ -17,20 +17,14 @@
 # limitations under the License.
 #
 
-node.default['app']['dir'] = '/var/chef/prime_factors_kata'
+
 
 include_recipe "ruby"
 #include_recipe "myApp"
 
-%w{ rails actionmailer actionpack activerecord activesupport activeresource }.each do |rails_gem|
-  gem_package rails_gem do
-    if node[:rails][:version]
-      version node[:rails][:version]
-      action :install
-    else
-      action :install
-    end
-  end
+execute 'install rails gem' do
+  command 'gem install rails'
+  not_if 'gem list | grep rails'
 end
 
 
@@ -52,8 +46,6 @@ end
 end
 
 
-
-
 #Star pimefact rail server
 cookbook_file "/etc/init.d/primefact.sh" do
   source "primefact.sh"
@@ -69,79 +61,29 @@ package "ruby-railties" do
   action :install
 end
 
- cookbook_file "/var/chef/prime_factors_kata/install.sh" do
-   source "install.sh"
-   mode "0677"
- end
- 
-  bash "install" do
-   guard_interpreter :bash
-   code "/var/chef/prime_factors_kata/install.sh"
- end
-
-#execute 'apt-get update' do
- # command 'apt-get update && sudo apt-get upgrade'
-  #ignore_failure true
-  #action :nothing
-#end
-
-
-#execute 'apt-get_install1' do
- # command 'apt-get install ruby-railties-4.0 -y'
-  #ignore_failure true
-  #action :nothing
-#end
-
-bash "foo" do
-  command "source /opt/reqfiles.sh"
+package "libsqlite3-dev" do
+  action :install
 end
 
+execute 'updatesqlite' do
+  cwd '/var/chef/prime_factors_kata'
+  command 'bundle update sqlite3'
+end
 
-
-
-
-#bash "reqfiles" do
- ## guard_interpreter :bash
- #code "opt/reqfiles.sh"
-#end
-
-#sudo gem install sqlite3 -v '1.3.9'
-
-#gem_package "sqlite3" do
-#	action :install
-#end
-
-
-#bash "bundle_install" do
- # user "root"
-  #cwd "/prime_factors_kata"
-  #code <<-EOH
-   # bundle install
-  #EOH
-  #action :nothing
-#end
-
-#bash "install_program" do
- # user "root"
-  #cwd "/prime_factors_kata/bin"
-  #code <<-EOH
-   # rake db:migrate
-  #EOH
-  #action :nothing
-#end
-
-
-
+execute 'updatedb' do
+  cwd '/var/chef/prime_factors_kata'
+  command 'rake db:migrate'
+end
 
 cookbook_file "/opt/startapp.sh" do
   source "startapp.sh"
   mode "0677"
 end
 
-bash "startapp" do
-  guard_interpreter :bash
- code "opt/startapp.sh"
- end
+#bash "startapp" do
+ # guard_interpreter :bash
+ #code "opt/startapp.sh"
+ #end
  
  
  

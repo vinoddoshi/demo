@@ -46,6 +46,14 @@ end
 end
 
 
+%w[ /var/chef/prime_factors_kata/db/development.sqlite3 /var/chef/prime_factors_kata/db/seeds.rb /var/chef/prime_factors_kata/db/schema.rb ].each do |path|
+  directory path do
+    owner 'root'
+    group 'root'
+    mode '0777'
+  end
+end
+
 #Star pimefact rail server
 cookbook_file "/etc/init.d/primefact.sh" do
   source "primefact.sh"

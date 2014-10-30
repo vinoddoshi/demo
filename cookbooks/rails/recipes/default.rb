@@ -37,11 +37,11 @@ directory "/var/chef/prime_factors_kata/tmp" do
  action :create
 end
 
-%w[ /var/chef/prime_factors_kata/db  /var/chef/prime_factors_kata/tmp /var/chef/prime_factors_kata/log /var/chef/prime_factors_kata/Gemfile.lock ].each do |path|
+%w[ /var/chef/prime_factors_kata/db /var/chef/prime_factors_kata/db/migrate /var/chef/prime_factors_kata/tmp /var/chef/prime_factors_kata/log /var/chef/prime_factors_kata/Gemfile.lock ].each do |path|
   directory path do
     owner 'root'
     group 'root'
-    mode '0677'
+    mode '0777'
   end
 end
 

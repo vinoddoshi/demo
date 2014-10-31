@@ -32,7 +32,7 @@ end
 
 def setup
 @b = Watir::Browser.new :ff
-@b.goto "http://192.168.33.10:3000/numbers/new"
+@b.goto "http://192.168.33.11:3000/numbers/new"
 end
 
 def teardown

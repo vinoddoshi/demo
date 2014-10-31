@@ -10,7 +10,7 @@ end
 
 When(/^user enter number$/) do
   #pending # express the regexp above with the code you wish you had#
-  #browser.text_field(:id => 'number_prime').set '6'
+  # browser.text_field(:id => 'number_prime').set '6'
   browser.button(:value,"Create Number").click
 
 end

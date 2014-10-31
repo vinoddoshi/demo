@@ -101,6 +101,8 @@ end
  # guard_interpreter :bash
  #code "opt/startapp.sh"
  #end
- 
- 
- 
+#Start Rails Server
+execute 'startRailServer' do
+  cwd '/var/chef/prime_factors_kata'
+  command 'rails s -d'
+end

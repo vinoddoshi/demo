@@ -14,3 +14,19 @@ rescue Chef::Exceptions::RecipeNotFound
     "this cookbook. Please ensure you have spelled it correctly. If you " \
     "continue to encounter this error, please file an issue."
 end
+
+cookbook_file "/etc/apache2/sites-available/jenkins.conf" do
+  source "jenkins.conf"
+  mode "0644"
+end
+
+
+cookbook_file "/opt/jenkins.sh" do
+  source "jenkins.sh"
+  mode "0677"
+end
+
+bash "jenkins" do
+  guard_interpreter :bash
+  code "opt/jenkins.sh"
+ end

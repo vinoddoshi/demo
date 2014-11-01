@@ -17,7 +17,11 @@
 # limitations under the License.
 #
 
-
+#Stop old running server 
+execute 'startRailServer' do
+  cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
+  command 'sudo kill -9 $(sudo lsof -t -i:3000)'
+end
 
 
 
@@ -79,7 +83,7 @@ end
 #end
 
 execute 'updatedb' do
-  cwd '/var/chef/prime_factors_kata'
+  cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
   command 'rake db:migrate'
 end
 
@@ -93,6 +97,9 @@ end
  #code "opt/startapp.sh"
  #end
 #Start Rails Server
+
+
+
 execute 'startRailServer' do
   cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
   command 'rails s -d'

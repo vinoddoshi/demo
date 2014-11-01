@@ -95,5 +95,5 @@ end
 #Start Rails Server
 execute 'startRailServer' do
   cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
-  command 'rails s -p 4000 -d'
+  command 'rails s -d'
 end

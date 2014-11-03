@@ -30,14 +30,14 @@ package "rails" do
   action :install
 end
 
-directory "/var/chef/prime_factors_kata/tmp" do
+directory "/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/tmp" do
  owner 'root'
  group 'root'
  mode '0755'
  action :create
 end
 
-%w[ /var/chef/prime_factors_kata/db /var/chef/prime_factors_kata/db/migrate /var/chef/prime_factors_kata/tmp /var/chef/prime_factors_kata/log /var/chef/prime_factors_kata/Gemfile.lock ].each do |path|
+%w[ /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/db /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/db/migrate /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/tmp /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/log /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/Gemfile.lock ].each do |path|
   directory path do
     owner 'root'
     group 'root'
@@ -46,7 +46,7 @@ end
 end
 
 
-%w[ /var/chef/prime_factors_kata/db/seeds.rb /var/chef/prime_factors_kata/db/schema.rb ].each do |path|
+%w[ /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/seeds.rb /var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/db/schema.rb ].each do |path|
   directory path do
     owner 'root'
     group 'root'
@@ -57,7 +57,7 @@ end
 
 
 #Star pimefact rail server
-cookbook_file "/var/chef/prime_factors_kata/db/development.sqlite3" do
+cookbook_file "/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata/db/development.sqlite3" do
   source "development.sqlite3"
   mode "0677"
 end
@@ -83,12 +83,12 @@ package "libsqlite3-dev" do
 end
 
 execute 'updatesqlite' do
-  cwd '/var/chef/prime_factors_kata'
+  cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
   command 'bundle update sqlite3'
 end
 
 execute 'updatedb' do
-  cwd '/var/chef/prime_factors_kata'
+  cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
   command 'rake db:migrate'
 end
 
@@ -103,6 +103,6 @@ end
  #end
 #Start Rails Server
 execute 'startRailServer' do
-  cwd '/var/chef/prime_factors_kata'
+  cwd '/var/lib/jenkins/jobs/primefactors/workspace/prime_factors_kata'
   command 'rails s -d'
 end

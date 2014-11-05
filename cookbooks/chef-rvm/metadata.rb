@@ -15,8 +15,7 @@ recipe "rvm::vagrant",      "An optional recipe to help if running in a Vagrant 
 recipe "rvm::gem_package",  "An experimental recipe that patches the gem_package resource"
 
 # provides chef_gem resource to chef <= 0.10.8 and fixes for chef < 10.12.0
-depends "chef_gem"
-
+#depends "chef_gem"
 supports "debian"
 supports "ubuntu"
 supports "suse"
@@ -29,7 +28,7 @@ supports "mac_os_x"
 supports "mac_os_x_server"
 
 # if using jruby, java is required on system
-recommends  "java"
+#recommends  "java"
 
 # for installing on OSX, this is required for installation and compilation
 suggests "homebrew"

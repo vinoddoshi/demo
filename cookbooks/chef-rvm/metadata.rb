@@ -6,9 +6,9 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.7.0"
 
 recipe "rvm",               "Includes all recipes"
-recipe "rvm::system",       "Installs system-wide RVM"
-recipe "rvm::vagrant",      "An optional recipe to help if running in a Vagrant virtual machine"
-recipe "rvm::gem_package",  "An experimental recipe that patches the gem_package resource"
+recipe "chef-rvm::system",       "Installs system-wide RVM"
+recipe "chef-rvm::vagrant",      "An optional recipe to help if running in a Vagrant virtual machine"
+recipe "chef-rvm::gem_package",  "An experimental recipe that patches the gem_package resource"
 
 %w{ debian ubuntu suse centos redhat fedora }.each do |os|
   supports os

@@ -62,7 +62,23 @@ bash "jenkins" do
 end
 
 
+execute 'rvmkey' do
+  cwd '/var/lib/jenkins/.ssh'
+  command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
+end
+
+
+execute 'rvmInstall' do
+  cwd '/var/lib/jenkins/.ssh'
+  command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
+end
+
+
 execute 'gemCucumber' do
   cwd '/var/lib/jenkins/.ssh'
   command 'gem install cucumber'
 end
+
+
+
+

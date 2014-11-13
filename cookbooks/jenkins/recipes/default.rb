@@ -61,11 +61,21 @@ bash "jenkins" do
   code "opt/jenkins.sh"
 end
 
-
-execute 'rvmkey' do
-  cwd '/var/lib/jenkins/.ssh'
-  command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
+chef_gem 'cucumber' do
+  action :install
+ end
+ 
+chef_gem 'rvm' do
+  action :install
+  version '>= 1.11.3.6'
 end
+
+
+
+#execute 'rvmkey' do
+ # cwd '/var/lib/jenkins/.ssh'
+  #command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
+#end
 
 
 #execute 'rvmInstall' do

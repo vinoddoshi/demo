@@ -38,10 +38,10 @@ end
 
 #git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD
 
-execute 'gitConfig' do
-  cwd '/var/lib/jenkins/.ssh'
-  command 'git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD'
-end
+#execute 'gitConfig' do
+ # cwd '/var/lib/jenkins/.ssh'
+  #command 'git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD'
+#end
 
 
 
@@ -64,7 +64,7 @@ end
 chef_gem 'cucumber' do
   action :install
  end
- 
+
 chef_gem 'rvm' do
   action :install
   version '>= 1.11.3.6'

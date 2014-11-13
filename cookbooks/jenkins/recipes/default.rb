@@ -21,6 +21,36 @@ cookbook_file "/etc/apache2/sites-available/jenkins.conf" do
 end
 
 
+directory "/var/lib/jenkins/.ssh" do
+ owner 'root'
+ group 'root'
+ mode '0755'
+ action :create
+end
+
+
+
+cookbook_file "/var/lib/jenkins/.ssh/id_dsa.pub" do
+  source "id_dsa.pub"
+  mode "0677"
+end
+
+
+#git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD
+
+execute 'gitConfig' do
+  cwd '/var/lib/jenkins/.ssh'
+  command 'git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD'
+end
+
+
+
+
+cookbook_file "/opt/jenkins.sh" do
+  source "jenkins.sh"
+  mode "0677"
+end
+
 cookbook_file "/opt/jenkins.sh" do
   source "jenkins.sh"
   mode "0677"
@@ -29,4 +59,10 @@ end
 bash "jenkins" do
   guard_interpreter :bash
   code "opt/jenkins.sh"
- end
+end
+
+
+execute 'gemCucumber' do
+  cwd '/var/lib/jenkins/.ssh'
+  command 'gem install cucumber'
+end

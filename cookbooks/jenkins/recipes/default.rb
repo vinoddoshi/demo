@@ -68,16 +68,16 @@ execute 'rvmkey' do
 end
 
 
-execute 'rvmInstall' do
-  cwd '/var/lib/jenkins/.ssh'
-  command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
-end
+#execute 'rvmInstall' do
+ # cwd '/var/lib/jenkins/.ssh'
+  #command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
+#end
 
 
-execute 'gemCucumber' do
-  cwd '/var/lib/jenkins/.ssh'
-  command 'gem install cucumber'
-end
+#execute 'gemCucumber' do
+ # cwd '/var/lib/jenkins/.ssh'
+  #command 'gem install cucumber'
+#end
 
 
 

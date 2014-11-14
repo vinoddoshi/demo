@@ -72,16 +72,16 @@ end
 
 
 
-execute 'rvmkey' do
-  cwd '/opt'
-  command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
-end
+#execute 'rvmkey' do
+  #cwd '/opt'
+ # command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
+#end
 
 
-execute 'rvmInstall' do
-  cwd '/opt'
-command '\curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles'
-end
+#execute 'rvmInstall' do
+ # cwd '/opt'
+#command '\curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles'
+#end
 
 
 #gem_installation "cucumber" do

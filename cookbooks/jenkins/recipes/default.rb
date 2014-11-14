@@ -83,6 +83,11 @@ execute 'rvmInstall' do
 command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
 end
 
+gem_package "cucumber" do
+  action :install
+  ignore_failure true
+end
+
 
 #execute 'gemCucumber' do
  # cwd '/var/lib/jenkins/.ssh'

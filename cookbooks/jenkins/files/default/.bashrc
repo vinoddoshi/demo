@@ -1,0 +1,1 @@
+[[ -s "/home/vagrant/.rvm/scripts/rvm" ]] && source "/home/vagrant/.rvm/scripts/rvm"

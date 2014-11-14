@@ -23,12 +23,6 @@ cookbook_file "/etc/apache2/sites-available/jenkins.conf" do
 end
 
 
-directory "/var/lib/jenkins/.ssh" do
- owner 'root'
- group 'root'
- mode '0755'
- action :create
-end
 
 
 
@@ -92,4 +86,31 @@ end
 bash "installGems" do
   guard_interpreter :bash
   code "/opt/installGems.sh"
+end
+
+directory "/var/lib/jenkins/.ssh" do
+ owner 'jenkins'
+ group 'root'
+ mode '0755'
+ action :create
+end
+
+cookbook_file "/var/lib/jenkins/.ssh/id_dsa" do
+ owner 'jenkins'
+ source "id_dsa"
+  mode "0677"
+end
+
+
+cookbook_file "/var/lib/jenkins/.ssh/id_dsa.pub" do
+ owner 'jenkins'
+ source "id_dsa.pub"
+  mode "0677"
+end
+
+
+cookbook_file "/var/lib/jenkins/.ssh/known_hosts" do
+ owner 'jenkins'
+ source "known_hosts"
+  mode "0677"
 end

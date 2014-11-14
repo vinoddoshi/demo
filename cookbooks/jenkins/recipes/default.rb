@@ -40,7 +40,7 @@ end
 
 #execute 'gitConfig' do
  # cwd '/var/lib/jenkins/.ssh'
-  #command 'git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD'
+ # command 'git ls-remote -h git@github.com:Pandurang1024/demo.git HEAD -yes'
 #end
 
 
@@ -80,7 +80,7 @@ end
 
 execute 'rvmInstall' do
   cwd '/opt'
-command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
+command 'sudo \curl -sSL https://get.rvm.io | bash'
 end
 
 
@@ -88,11 +88,38 @@ end
  # action :install
 #end
 
+execute 'setDefaultRVM' do
+  cwd  '/opt'
+  command 'rvm --default use 2.1.4'
+end
+
+
+ 
 
 execute 'gemCucumber' do
   cwd  '/opt'
   command 'sudo gem install cucumber'
 end
+
+execute 'gemNokogiri' do
+  cwd  '/opt'
+  command 'sudo gem install nokogiri'
+end
+
+execute 'gemCapybara' do
+  cwd  '/opt'
+  command 'sudo gem install capybara'
+end
+
+
+execute 'gemCapybara' do
+  cwd  '/opt'
+  command 'sudo gem install selenium-webdriver'
+end
+
+
+
+
 
 #gem_installation "nokogiri" do
  # action :install

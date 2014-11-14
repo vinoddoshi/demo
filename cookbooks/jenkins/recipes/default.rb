@@ -72,26 +72,30 @@ end
 
 
 
-#execute 'rvmkey' do
-  #cwd '/opt'
- # command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
-#end
+execute 'rvmkey' do
+  cwd '/opt'
+  command 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3'
+end
 
 
-#execute 'rvmInstall' do
- # cwd '/opt'
-#command '\curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles'
-#end
+execute 'rvmInstall' do
+cwd '/opt'
+command '\curl -sSL https://get.rvm.io | bash'
+end
 
 
-#gem_installation "cucumber" do
- # action :install
-#end
 
 # execute 'setDefaultRVM' do
   #cwd  '/opt'
  # command 'rvm --default use 2.1.4'
 #end
+
+
+
+cookbook_file "/var/lib/jenkins/.bashrc" do
+  source ".bashrc"
+  mode "0677"
+end
 
 
 execute 'gemCucumber' do
@@ -114,21 +118,3 @@ execute 'gemCapybara' do
   cwd  '/opt'
   command 'sudo gem install selenium-webdriver'
 end
-
-
-
-
-
-#gem_installation "nokogiri" do
- # action :install
-#end
-
-
-#execute 'gemCucumber' do
- # cwd '/var/lib/jenkins/.ssh'
-  #command 'gem install cucumber'
-#end
-
-
-
-

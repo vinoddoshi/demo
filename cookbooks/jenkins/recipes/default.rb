@@ -83,9 +83,15 @@ execute 'rvmInstall' do
 command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
 end
 
-gem_package "cucumber" do
+
+gem_installation "cucumber" do
   action :install
-  ignore_failure true
+end
+
+
+
+gem_installation "nokogiri" do
+  action :install
 end
 
 

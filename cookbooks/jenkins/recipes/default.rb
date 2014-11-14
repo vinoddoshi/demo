@@ -80,7 +80,7 @@ end
 
 execute 'rvmInstall' do
   cwd '/opt'
-command 'sudo \curl -sSL https://get.rvm.io | bash'
+command '\curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles'
 end
 
 
@@ -93,8 +93,6 @@ execute 'setDefaultRVM' do
   command 'rvm --default use 2.1.4'
 end
 
-
- 
 
 execute 'gemCucumber' do
   cwd  '/opt'

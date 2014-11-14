@@ -88,10 +88,10 @@ end
  # action :install
 #end
 
-execute 'setDefaultRVM' do
-  cwd  '/opt'
-  command 'rvm --default use 2.1.4'
-end
+# execute 'setDefaultRVM' do
+  #cwd  '/opt'
+ # command 'rvm --default use 2.1.4'
+#end
 
 
 execute 'gemCucumber' do

@@ -91,7 +91,7 @@ end
 
 execute 'gemCucumber' do
   cwd  '/opt'
-  command 'gem install cucumber'
+  command 'sudo gem install cucumber'
 end
 
 #gem_installation "nokogiri" do

@@ -79,20 +79,24 @@ end
 
 
 execute 'rvmInstall' do
-  cwd 'opt'
+  cwd '/opt'
 command '\curl -sSL https://get.rvm.io | bash -s stable --ruby'
 end
 
 
-gem_installation "cucumber" do
-  action :install
+#gem_installation "cucumber" do
+ # action :install
+#end
+
+
+execute 'gemCucumber' do
+  cwd  '/opt'
+  command 'gem install cucumber'
 end
 
-
-
-gem_installation "nokogiri" do
-  action :install
-end
+#gem_installation "nokogiri" do
+ # action :install
+#end
 
 
 #execute 'gemCucumber' do

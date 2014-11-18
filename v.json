@@ -1,0 +1,3 @@
+{
+        "run_list": [ "recipe[runit]", "recipe[rbenv]", "recipe[build-essential]", "recipe[ruby]", "recipe[nodejs]", "recipe[rails]", "recipe[myApp]", "recipe[jenkins]" ]
+}
